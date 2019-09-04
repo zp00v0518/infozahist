@@ -22,7 +22,7 @@ export default {
       this.isError = false;
       this.$store.commit("SAVE_IN_STORAGE", {
         code: this.data.code,
-        value: this.value
+        value
       });
       this.$emit("change", this.value);
     }

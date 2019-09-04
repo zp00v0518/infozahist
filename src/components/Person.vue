@@ -60,7 +60,7 @@ export default {
     handlerValidation(value) {
       this.isValidatiaon = value;
     },
-    handlerChange(event) {
+    handlerChange() {
       this.checkValidate = false;
     }
   }

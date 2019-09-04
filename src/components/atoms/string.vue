@@ -14,9 +14,7 @@ import { validation, baseMixin } from "./mixins";
 
 export default {
   name: "Vstring",
-  components: {
-    ElementInput
-  },
+  components: { ElementInput },
   mixins: [validation, baseMixin]
 };
 </script>

@@ -9,14 +9,12 @@
 </template>
 
 <script>
-import { Switch as ElementSwitch } from 'element-ui';
+import { Switch as ElementSwitch } from "element-ui";
 import { validation, baseMixin } from "./mixins";
 
 export default {
   name: "Vstring",
-  components: {
-    ElementSwitch
-  },
+  components: { ElementSwitch },
   mixins: [validation, baseMixin]
 };
 </script>

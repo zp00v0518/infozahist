@@ -20,9 +20,6 @@ const person = {
         title: 'Вік',
         code: 'age',
         type: 'int',
-        validation: {
-          required: true
-        }
       },
       {
         title: 'Email',
@@ -35,7 +32,7 @@ const person = {
         title: 'Важливість',
         code: 'importance',
         type: 'enum',
-        enumType: 'ImpotanceValue'
+        enumType: 'ImportanceValue'
       },
       {
         title: 'Посада',

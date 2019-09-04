@@ -17,20 +17,10 @@ export default {
   components: {
     ElementInput
   },
-  mixins: [validation, baseMixin],
-
-
+  mixins: [validation, baseMixin]
 };
 </script>
 
 <style lang="scss" scoped>
-.string {
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.error {
-  color: red;
-}
+@import "../../assets/app.scss";
 </style>

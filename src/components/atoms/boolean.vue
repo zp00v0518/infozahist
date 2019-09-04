@@ -1,27 +1,26 @@
 <template>
-  <div class="boolean">
-    <ElementInput v-model="value" />
+  <div class="string">
+    <Vtitle :title="data.title" :required="isRequred"></Vtitle>
+    <div>
+      <span v-if="isError" class="error">{{error}}</span>
+      <ElementSwitch v-model="value" @change="handlerChange" />
+    </div>
   </div>
 </template>
 
 <script>
-import { Input as ElementInput } from "element-ui";
+import { Switch as ElementSwitch } from 'element-ui';
+import { validation, baseMixin } from "./mixins";
 
 export default {
-  name: "Vboolean",
+  name: "Vstring",
   components: {
-    ElementInput
+    ElementSwitch
   },
-  props: {
-    data: { type: Object, required: true }
-  },
-  data() {
-    return {
-      value: ""
-    };
-  },
-  created() {
-    console.log(this.data);
-  }
+  mixins: [validation, baseMixin]
 };
-</script>    
+</script>
+
+<style lang="scss" scoped>
+@import "../../assets/app.scss";
+</style>

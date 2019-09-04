@@ -1,6 +1,6 @@
 <template>
   <div class="string">
-    <Vtitle :title="data.title" :required="data.validation.required"></Vtitle>
+    <Vtitle :title="data.title" :required="isRequred"></Vtitle>
     <div>
       <span v-if="isError" class="error">{{error}}</span>
       <ElementInput v-model="value" @change="handlerChange" />

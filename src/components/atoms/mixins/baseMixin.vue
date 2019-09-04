@@ -6,10 +6,16 @@ export default {
   },
   data() {
     return {
-      value: "",
+      value: null,
       error: "Поле не пройшло перевірку",
       isError: false
     };
+  },
+  computed: {
+    isRequred() {
+      const { validation } = this.data;
+      return validation ? validation.required : validation;
+    }
   },
   methods: {
     handlerChange(value) {

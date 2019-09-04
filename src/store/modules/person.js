@@ -19,7 +19,10 @@ const person = {
       {
         title: 'Вік',
         code: 'age',
-        type: 'int'
+        type: 'int',
+        validation: {
+          required: true
+        }
       },
       {
         title: 'Email',

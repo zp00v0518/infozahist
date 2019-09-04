@@ -31,10 +31,14 @@ export default {
       }
     },
     ["required" + part_func_name](check) {
-      return check ? Boolean(this.value) : true;
+      return check && this.value !== 0? Boolean(this.value) : true;
     },
     ["email" + part_func_name](check) {
       return check ? Boolean(this.value) : true;
+    },
+    ["pattern" + part_func_name](pattern) {
+      const regexp = new RegExp(pattern);
+      return regexp.test(this.value)
     }
   }
 };

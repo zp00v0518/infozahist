@@ -13,6 +13,7 @@
       <Multiple v-else :key="item.code" :data="item" />
     </template>
     <ElementButton @click="handlerClick" type="primary">{{btnName}}</ElementButton>
+    <!-- <ElementButton @click="checkValidate = false">Скинути</ElementButton> -->
   </div>
 </template>
 
@@ -27,7 +28,8 @@ export default {
   data() {
     return {
       btnName: "Зберігти",
-      checkValidate: false
+      checkValidate: false,
+      isValidatiaon: true
     };
   },
   created() {
@@ -46,9 +48,20 @@ export default {
     },
     handlerClick() {
       this.checkValidate = true;
+      this.$nextTick(() => {
+        if (this.isValidatiaon) {
+          console.log(this.$store.state.storage.data);
+        } else {
+          this.isValidatiaon = true;
+          this.checkValidate = false;
+        }
+      });
     },
     handlerValidation(value) {
-      console.log(value);
+      this.isValidatiaon = value;
+    },
+    handlerChange(event) {
+      this.checkValidate = false;
     }
   }
 };

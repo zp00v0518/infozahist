@@ -55,8 +55,6 @@ const person = {
       }
     ]
   },
-
-  mutations: {}
 };
 
 export default person;

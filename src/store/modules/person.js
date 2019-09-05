@@ -48,7 +48,7 @@ const person = {
       {
         title: 'Телефон',
         code: 'phone',
-        // multiple: true,
+        multiple: true,
         validation: {
           pattern: '^\\+38 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}$'
         }

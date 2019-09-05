@@ -7,6 +7,12 @@ export default {
       if (newValue) {
         this.getValidate();
       }
+    },
+    data:{
+      deep: true,
+      handler: function(newValue){
+        this.value = newValue.value
+      }
     }
   },
   methods: {

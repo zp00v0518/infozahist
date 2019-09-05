@@ -3,7 +3,7 @@
     <Vtitle :title="data.title" :required="isRequred"></Vtitle>
     <div>
       <span v-if="isError" class="error">{{error}}</span>
-      <ElementInput v-model="value" @change="handlerChange" />
+      <ElementInput v-model="value" :value="data.value" @change="handlerChange" />
     </div>
   </div>
 </template>

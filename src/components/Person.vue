@@ -10,9 +10,9 @@
         @validation="handlerValidation"
         @change="handlerChange"
       />
-      <Multiple v-else :key="item.code" :data="item" />
+      <Multiple v-else :key="item.code" :data="item" :checkValidate="checkValidate" />
     </template>
-    <ElementButton @click="handlerClick" type="primary">{{btnName}}</ElementButton>
+    <ElementButton @click="handlerClick" type="primary" style="margin-top: 15px;">{{btnName}}</ElementButton>
     <!-- <ElementButton @click="checkValidate = false">Скинути</ElementButton> -->
   </div>
 </template>
@@ -69,6 +69,6 @@ export default {
 
 <style scoped lang="scss">
 .person {
-  max-width: 300px;
+  max-width: 400px;
 }
 </style>

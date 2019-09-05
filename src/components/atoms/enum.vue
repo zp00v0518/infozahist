@@ -16,7 +16,7 @@
         <ElementOption
           v-for="(item, index) in choices"
           :key="index"
-          :label="item.title"
+          :label="isAutocomplete ? getPath(item) : item.title "
           :value="item.id"
         ></ElementOption>
       </ElementSelect>
@@ -53,17 +53,15 @@ export default {
   mixins: [validation, baseMixin],
   data() {
     return {
-      choices: []
+      choices: [],
+      allTree: []
     };
   },
   created() {
     this.choices = this.isAutocomplete ? [] : enumTypes[this.data.enumType];
-    // this.choices =  enumTypes[this.data.enumType];
+    !this.isAutocomplete || this.setAllChildren(enumTypes[this.data.enumType]);
   },
   computed: {
-    // choices() {
-    //   return enumTypes[this.data.enumType] || [];
-    // },
     isAutocomplete() {
       return this.data.enumType === "JobPositionValue";
     }
@@ -71,13 +69,43 @@ export default {
   methods: {
     remoteMethod(value) {
       const lowValue = value.toLowerCase();
-      const list = enumTypes[this.data.enumType];
+      const list = this.allTree;
       const temper = list.filter(item => {
         const lowTitle = item.title.toLowerCase();
         return lowTitle.includes(lowValue);
       });
       this.choices = temper;
       return temper;
+    },
+    setAllChildren(arr) {
+      this.allTree = arr.sort((a, b) => a.id - b.id);
+      this.allTree.forEach((item, index, cur) => {
+        const { parentId } = item;
+        if (parentId !== undefined) {
+          if (!cur[parentId - 1].children) {
+            cur[parentId - 1].children = [];
+          }
+          cur[parentId - 1].children.push(item);
+        }
+      });
+    },
+    getPath(item) {
+      const { allTree } = this;
+      const result = [];
+      result.push(item.title);
+      getParentTitle(item.parentId, result);
+
+      function getParentTitle(parentId, arr) {
+        if (parentId) {
+          const index = parentId - 1;
+          const parent = allTree[index];
+          arr.unshift(parent.title);
+          getParentTitle(parent.parentId, arr);
+        } else {
+          return arr;
+        }
+      }
+      return result.join(" > ");
     }
   }
 };

@@ -18,7 +18,8 @@ export default {
     }
   },
   methods: {
-    handlerChange(value) {
+    handlerChange(event) {
+      const value = this.data.type === 'date' ? event.toISOString() : event;
       this.isError = false;
       this.$store.commit("SAVE_IN_STORAGE", {
         code: this.data.code,

@@ -57,7 +57,6 @@ export default {
     createTemplate() {
       this.default = Object.assign({}, this.data);
     },
-
     addItem() {
       this.list.push(Object.assign({}, this.default));
     },

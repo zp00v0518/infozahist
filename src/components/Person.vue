@@ -13,7 +13,6 @@
       <Multiple v-else :key="item.code" :data="item" :checkValidate="checkValidate" />
     </template>
     <ElementButton @click="handlerClick" type="primary" style="margin-top: 15px;">{{btnName}}</ElementButton>
-    <!-- <ElementButton @click="checkValidate = false">Скинути</ElementButton> -->
   </div>
 </template>
 

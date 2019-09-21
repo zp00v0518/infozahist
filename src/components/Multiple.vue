@@ -17,6 +17,7 @@
 
 <script>
 import { Button as ElementButton } from "element-ui";
+import { getComponentName } from "../plugins";
 
 export default {
   name: "Multiple",
@@ -41,6 +42,7 @@ export default {
     this.createTemplate();
   },
   methods: {
+    getComponentName,
     handlerChange(event, index) {
       this.list[index].value = event;
       this.saveInStorage();
@@ -55,11 +57,7 @@ export default {
     createTemplate() {
       this.default = Object.assign({}, this.data);
     },
-    getComponentName(item) {
-      const prefix = "V";
-      if (!item.type) return prefix + "string";
-      return prefix + item.type;
-    },
+
     addItem() {
       this.list.push(Object.assign({}, this.default));
     },

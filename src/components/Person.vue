@@ -21,6 +21,7 @@
 import { mapState } from "vuex";
 import { Button as ElementButton } from "element-ui";
 import Multiple from "./Multiple";
+import { getComponentName } from "../plugins";
 
 export default {
   name: "Person",
@@ -32,20 +33,13 @@ export default {
       isValidatiaon: true
     };
   },
-  created() {
-    // console.log(this.attributes);
-  },
   computed: {
     ...mapState({
       attributes: state => state.person.attributes
     })
   },
   methods: {
-    getComponentName(item) {
-      const prefix = "V";
-      if (!item.type) return prefix + "string";
-      return prefix + item.type;
-    },
+    getComponentName,
     handlerClick() {
       this.checkValidate = true;
       this.$nextTick(() => {
